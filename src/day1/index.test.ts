@@ -1,18 +1,27 @@
-import { solveDay1 } from './index';
+import { differenceTotal, similarityScore } from './index';
+import { example, input } from './input';
 
 describe('Day 1', () => {
     test('Example case', () => {
-        const left = [3, 4, 2, 1, 3, 3];
-        const right = [4, 3, 5, 3, 9, 3];
-        
-        console.log('Sorted left:', [...left].sort());
-        console.log('Sorted right:', [...right].sort());
-        
         const expected = 11;
-        expect(solveDay1(left, right)).toBe(expected);
+        expect(differenceTotal(example)).toBe(expected);
     });
     
     test('Simple case', () => {
-        expect(solveDay1([1, 2], [2, 1])).toBe(0);
+        const simpleInput = `1   2
+2   1`;
+        expect(differenceTotal(simpleInput)).toBe(0);
+    });
+
+    test('Real difference input', () => {
+        const result = differenceTotal(input);
+        console.log('Real input result:', result);
+        expect(typeof result).toBe('number');
+    });
+
+    test('Real similarity score input', () => {
+        const result = similarityScore(input);
+        console.log('Real similarity score result:', result);
+        expect(typeof result).toBe('number');
     });
 });
